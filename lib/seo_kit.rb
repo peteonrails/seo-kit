@@ -1,1 +1,1 @@
-#
+require 'seo-kit/extensions/seo-kit-routes'

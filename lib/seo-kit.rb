@@ -1,1 +1,1 @@
-require 'seo_kit.rb'
+require 'seo_kit'
