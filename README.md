@@ -1,8 +1,8 @@
 Installing
 ==========
 
-script/plugin install git://github.com/peteonrails/seo-kit.git
-script/generate seo_kit
+    script/plugin install git://github.com/peteonrails/seo-kit.git
+    script/generate seo_kit
 
 What you get
 ============
