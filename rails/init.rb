@@ -1,1 +1,1 @@
-require 'seo-kit'
+require 'seo_kit'
