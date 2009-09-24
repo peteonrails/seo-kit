@@ -7,10 +7,10 @@ xml.urlset "xmlns" => "http://www.google.com/schemas/sitemap/0.84" do
     xml.changefreq  "always"
   end
  
-  SITEMAP_MODELS.each do |model_name|
+  @models.each_with_key do |model_name, models|
+    controller_name = model_name.downcase.pluralize 
     instance_eval <<-EOC 
-      controller_name = model_name.downcase.pluralize 
-      @#{model_name}.each do |list|
+      models.each do |list|
         xml.url do
           xml.loc         url_for(:only_path => false, :controller => '#{controller_name}', :action => 'show', :id => list)
           xml.lastmod     list.updated_at.to_s(:w3cdate) 
