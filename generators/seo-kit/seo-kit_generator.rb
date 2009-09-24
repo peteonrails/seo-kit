@@ -1,0 +1,1 @@
+require 'seo_kit_generator'
