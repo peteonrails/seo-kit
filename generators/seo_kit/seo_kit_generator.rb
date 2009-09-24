@@ -1,3 +1,4 @@
+require File.expand_path(File.dirname(__FILE__) + "/lib/insert_commands.rb")
 class SeoKitGenerator < Rails::Generator::Base
   def manifest
     record do |m|
@@ -13,11 +14,11 @@ class SeoKitGenerator < Rails::Generator::Base
     tag(:link, :rel => :canonical, :href => @canonical_url) if @canonical_url
   end
 }
-      m.insert_into "app/layouts/application.html.haml",
+      m.insert_into "app/views/layouts/application.html.haml",
 %q{
 - content_for :head do 
   = canonical_link_tag 
-        } 
+} 
       m.file "seo.rb", "config/initializers/seo.rb"
     end
   end
