@@ -7,18 +7,16 @@ xml.urlset "xmlns" => "http://www.google.com/schemas/sitemap/0.84" do
     xml.changefreq  "always"
   end
  
-  @models.each_with_key do |model_name, models|
+  @models.each do |model_name, models|
     controller_name = model_name.downcase.pluralize 
-    instance_eval <<-EOC 
       models.each do |list|
         xml.url do
-          xml.loc         url_for(:only_path => false, :controller => '#{controller_name}', :action => 'show', :id => list)
+          xml.loc         url_for(:only_path => false, :controller => controller_name}, :action => 'show', :id => list.id)
           xml.lastmod     list.updated_at.to_s(:w3cdate) 
           xml.changefreq  "weekly"
           xml.priority    0.8
         end
       end  
-    EOC
   end
   
   SITEMAP_URLS.each do |url|
