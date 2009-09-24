@@ -1,1 +1,1 @@
-require 'seo-kit/extensions/seo-kit-routes'
+require 'seo_kit/extensions/seo_kit_routes'
