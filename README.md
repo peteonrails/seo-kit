@@ -38,9 +38,18 @@ update which models are included in the sitemap, see
 
     config/initializers/seo.rb
   
-Add downcased model names to the SITEMAP_MODELS array to include more models. To include named routes 
-or other URLs that we can't use generators (e.g. pages controlled by high_voltage), you can list
-them in the SITEMAP_URLS field. For example: 
+Add downcased model names to the SITEMAP_MODELS array to include more models. The kit
+ships with the user model set up for sitemapping (which is a bad idea if you do not have
+public profiles for your users):
+
+    SITEMAP_MODELS = %w(user)
+
+If you have a blog site, then do this: 
+
+    SITEMAP_MODELS = %w(post comment category user)
+
+To include named routes or other URLs that we can't use generators (e.g. pages 
+controlled by high\_voltage), you can list them in the SITEMAP_URLS field. For example: 
 
     SITEMAP_URLS = [
       "http://mysite.org/faq.html",
