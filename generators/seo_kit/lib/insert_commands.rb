@@ -15,6 +15,11 @@ Rails::Generator::Commands::Create.class_eval do
       end
     end
   end
+  
+  def append_into(file, line)
+    logger.insert "#{line} into #{file}"
+    File.open(file, "a") { |file| file.puts(line) } unless options[:pretend] || file_contains?(file, line)
+  end
 end
 
 Rails::Generator::Commands::Destroy.class_eval do
@@ -22,6 +27,13 @@ Rails::Generator::Commands::Destroy.class_eval do
     logger.remove "#{line} from #{file}"
     unless options[:pretend]
       gsub_file file, "\n  #{line}", ''
+    end
+  end
+
+  def append_into(file, line)
+    logger.remove "#{line} from #{file}"
+    unless options[:pretend]
+      gsub_file file, "\n#{line}", ''
     end
   end
 end

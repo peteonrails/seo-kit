@@ -14,7 +14,7 @@ class SeoKitGenerator < Rails::Generator::Base
     tag(:link, :rel => :canonical, :href => @canonical_url) if @canonical_url
   end
 }
-      m.insert_into "app/views/layouts/application.html.haml",
+    m.append_into "app/views/layouts/application.html.haml",
 %q{
 - content_for :head do 
   = canonical_link_tag 
